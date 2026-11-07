@@ -1,0 +1,127 @@
+export default {
+  id: 'educational',
+  agency: 'الشؤون التعليمية',
+  title: 'تقرير الشؤون التعليمية',
+  description: 'حصص الانتظار والانضباط، الاختبارات والتحصيل، الزيارات والتطوير المهني.',
+  icon: 'book',
+  sections: [
+    {
+      id: 'waiting',
+      title: 'حصص الانتظار والانضباط',
+      fields: [
+        { id: 'waitingCount', type: 'number', label: 'عدد حصص الانتظار المنفذة خلال الأسبوع' },
+        {
+          id: 'waitingInvested',
+          type: 'yesno',
+          label: 'هل تم استثمار حصص الانتظار؟',
+          note: { when: 'no', label: 'السبب والإجراء المتخذ' },
+        },
+        { id: 'waitingPrograms', type: 'number', label: 'عدد البرامج المفعلة في حصص الانتظار' },
+        {
+          id: 'classCommitment',
+          type: 'yesno',
+          label: 'هل تم الالتزام بالحصص؟',
+          note: { when: 'no', label: 'الإجراء المتخذ' },
+        },
+        {
+          id: 'nonCommitment',
+          type: 'table',
+          label: 'تفاصيل عدم الالتزام',
+          sensitive: true,
+          addLabel: 'إضافة حالة',
+          columns: [
+            { id: 'teacher', label: 'اسم المعلمة', type: 'text', width: 30 },
+            { id: 'day', label: 'اليوم', type: 'day', width: 14 },
+            { id: 'date', label: 'التاريخ', type: 'date', width: 18 },
+            { id: 'reason', label: 'السبب', type: 'text', width: 38 },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'exams',
+      title: 'الاختبارات والتحصيل الدراسي',
+      fields: [
+        {
+          id: 'periodicExam',
+          type: 'yesno',
+          label: 'هل تم تنفيذ الاختبار الفتري؟',
+          note: { when: 'no', label: 'السبب والموعد البديل' },
+        },
+        {
+          id: 'gradesRecorded',
+          type: 'yesno',
+          label: 'هل تم رصد الدرجات؟',
+          note: { when: 'no', label: 'السبب والإجراء المتخذ' },
+        },
+        {
+          id: 'platformExams',
+          type: 'yesno',
+          label: 'هل تمت متابعة اختبارات الطلاب على المنصة؟',
+          note: { when: 'no', label: 'السبب والإجراء المتخذ' },
+        },
+        {
+          id: 'lessonsUploaded',
+          type: 'yesno',
+          label: 'هل تم رفع الدروس والخطط الأسبوعية؟',
+          note: { when: 'no', label: 'السبب والإجراء المتخذ' },
+        },
+        { id: 'hasStruggling', type: 'yesno', label: 'هل توجد حالات تعثر دراسي؟' },
+        { id: 'strugglingDetails', type: 'textarea', label: 'تفاصيل التعثر والإجراءات المتخذة', sensitive: true },
+        {
+          id: 'planCommitment',
+          type: 'yesno',
+          label: 'هل تم الالتزام بالخطة الفصلية؟',
+          note: { when: 'no', label: 'أسباب التأخر وخطة المعالجة' },
+        },
+      ],
+    },
+    {
+      id: 'development',
+      title: 'الزيارات والتطوير المهني',
+      fields: [
+        {
+          id: 'peerVisits',
+          type: 'yesno',
+          label: 'هل تم تفعيل الزيارات الصفية بين الزميلات؟',
+          note: { when: 'no', label: 'السبب والإجراء المتخذ' },
+        },
+        {
+          id: 'peerVisitsList',
+          type: 'table',
+          label: 'أسماء المشاركات وتواريخ الزيارات',
+          sensitive: true,
+          addLabel: 'إضافة زيارة',
+          columns: [
+            { id: 'visitor', label: 'اسم المعلمة الزائرة', type: 'text', width: 28 },
+            { id: 'visited', label: 'اسم المعلمة المزورة', type: 'text', width: 28 },
+            { id: 'date', label: 'تاريخ الزيارة', type: 'date', width: 18 },
+            { id: 'notes', label: 'ملاحظات', type: 'text', width: 26 },
+          ],
+        },
+        {
+          id: 'diagnosticTests',
+          type: 'yesno',
+          label: 'هل تم تفعيل الاختبارات التشخيصية؟',
+          note: { when: 'no', label: 'السبب والإجراء المتخذ' },
+        },
+        { id: 'trainingPrograms', type: 'number', label: 'عدد البرامج التدريبية المنفذة' },
+        { id: 'profMeetings', type: 'number', label: 'عدد الاجتماعات المهنية' },
+        { id: 'specMeetings', type: 'number', label: 'عدد الاجتماعات التخصصية' },
+        { id: 'staffMeetings', type: 'number', label: 'عدد اجتماعات الهيئة التعليمية' },
+        {
+          id: 'meetingsDetails',
+          type: 'table',
+          label: 'تفاصيل الاجتماعات ونتائجها',
+          addLabel: 'إضافة اجتماع',
+          columns: [
+            { id: 'kind', label: 'نوع الاجتماع', type: 'text', width: 20 },
+            { id: 'date', label: 'التاريخ', type: 'date', width: 16 },
+            { id: 'topic', label: 'الموضوع', type: 'text', width: 30 },
+            { id: 'results', label: 'النتائج والتوصيات', type: 'text', width: 34 },
+          ],
+        },
+      ],
+    },
+  ],
+};

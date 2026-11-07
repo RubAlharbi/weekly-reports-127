@@ -1,0 +1,425 @@
+/* صفحة التقرير بمقاس A4 – تستخدم في المعاينة والطباعة وتوليد PDF */
+.report-stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 210mm;
+  pointer-events: none;
+}
+
+.rp-page {
+  width: 210mm;
+  height: 297mm;
+  padding: 9mm 12mm 7mm;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: #1a2420;
+  font-family: var(--font);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  direction: rtl;
+  text-align: right;
+  overflow: hidden;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.report-stage .rp-page + .rp-page {
+  margin-top: 10mm;
+}
+
+.rp-header {
+  display: grid;
+  grid-template-columns: 30mm 1fr 30mm;
+  align-items: center;
+  gap: 4mm;
+  padding-bottom: 3mm;
+  border-bottom: 0.6mm solid var(--green-800);
+  position: relative;
+}
+
+.rp-header::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1.6mm;
+  border-bottom: 0.25mm solid var(--green-200);
+}
+
+.rp-logo {
+  width: 30mm;
+  height: 25mm;
+  display: grid;
+  place-items: center;
+}
+
+.rp-logo.is-missing {
+  font-size: 7pt;
+}
+
+.rp-org {
+  text-align: center;
+  color: var(--green-900);
+  line-height: 1.5;
+}
+
+.rp-org p {
+  font-size: 10.5pt;
+  font-weight: 500;
+}
+
+.rp-org p:first-child {
+  font-weight: 700;
+}
+
+.rp-org p.is-school {
+  font-weight: 800;
+  font-size: 11.5pt;
+  color: var(--green-800);
+}
+
+.rp-titlebar {
+  text-align: center;
+  padding: 4.5mm 0 3.5mm;
+}
+
+.rp-titlebar h1 {
+  display: inline-block;
+  font-size: 16pt;
+  font-weight: 800;
+  color: var(--green-900);
+  padding: 0.6mm 8mm;
+  border-radius: 99px;
+  background: var(--green-50);
+  border: 0.3mm solid var(--green-100);
+  line-height: 1.6;
+}
+
+.rp-titlebar h2 {
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-top: 1.5mm;
+}
+
+.rp-titlebar--cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3mm;
+  padding: 3.5mm 0 2.5mm;
+}
+
+.rp-titlebar--cont h2 {
+  font-size: 11.5pt;
+  margin: 0;
+}
+
+.rp-titlebar--cont span {
+  font-size: 8.5pt;
+  color: #5b6a64;
+  border: 0.25mm solid var(--gray-200);
+  border-radius: 99px;
+  padding: 0 2.5mm;
+}
+
+.rp-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.rp-flow {
+  display: flow-root;
+}
+
+.rp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4mm;
+  padding-top: 2mm;
+  margin-top: 2mm;
+  border-top: 0.25mm solid var(--gray-200);
+  font-size: 8pt;
+  color: #5b6a64;
+}
+
+.rp-footer__page {
+  font-weight: 700;
+  color: var(--green-800);
+  white-space: nowrap;
+}
+
+/* جدول البيانات الأساسية */
+.rp-info {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-bottom: 4mm;
+  font-size: 10pt;
+}
+
+.rp-info th,
+.rp-info td {
+  border: 0.25mm solid #cfd8d4;
+  padding: 1.4mm 2.2mm;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.rp-info th {
+  background: var(--green-50);
+  color: var(--green-900);
+  font-weight: 700;
+}
+
+.rp-info td {
+  font-weight: 500;
+}
+
+/* عناوين الأقسام */
+.rp-heading {
+  font-size: 11.5pt;
+  font-weight: 800;
+  color: #fff;
+  background: var(--green-800);
+  padding: 1.2mm 3.5mm;
+  border-radius: 1.8mm 1.8mm 0 0;
+  margin-top: 3mm;
+}
+
+.rp-flow > .rp-heading:first-child {
+  margin-top: 0;
+}
+
+.rp-heading--cont {
+  background: var(--green-700);
+  font-size: 10.5pt;
+}
+
+.rp-subheading {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--green-900);
+  background: var(--green-100);
+  padding: 1mm 3.5mm;
+  border: 0.25mm solid #cfd8d4;
+  border-bottom: 0;
+  margin-top: 0;
+}
+
+/* جداول البنود */
+.rp-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 10pt;
+}
+
+.rp-table th,
+.rp-table td {
+  border: 0.25mm solid #cfd8d4;
+  padding: 1.3mm 2.2mm;
+  text-align: right;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.rp-table thead th {
+  background: #f1f4f3;
+  color: #3b4a44;
+  font-weight: 700;
+  font-size: 9pt;
+  padding-block: 1mm;
+}
+
+.rp-table tbody tr:nth-child(even) td {
+  background: #fafbfb;
+}
+
+.rp-table td:first-child,
+.rp-table th:first-child {
+  text-align: center;
+}
+
+.rp-idx {
+  font-weight: 700;
+  color: var(--green-800);
+}
+
+.rp-label {
+  font-weight: 500;
+}
+
+.rp-span-head {
+  margin-bottom: 1mm;
+  padding-bottom: 0.8mm;
+  border-bottom: 0.2mm dashed #d5ddd9;
+}
+
+.rp-span-head .rp-label {
+  font-weight: 700;
+}
+
+.rp-span .rp-badge {
+  margin-bottom: 0.5mm;
+}
+
+.rp-cont {
+  color: #5b6a64;
+  font-size: 8.5pt;
+}
+
+.rp-num {
+  font-weight: 800;
+  font-size: 10.5pt;
+  color: var(--green-900);
+}
+
+.rp-text,
+.rp-longtext {
+  white-space: pre-wrap;
+}
+
+.rp-empty {
+  color: #9aa7a1;
+  font-weight: 700;
+}
+
+.rp-empty small {
+  font-weight: 400;
+  font-size: 8.5pt;
+}
+
+.rp-badge {
+  display: inline-block;
+  min-width: 13mm;
+  text-align: center;
+  padding: 0 2.5mm;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 9.5pt;
+  line-height: 1.6;
+}
+
+.rp-badge--yes {
+  background: #e3f2ea;
+  color: #14513f;
+}
+
+.rp-badge--no {
+  background: #f8e6e2;
+  color: #8f2f22;
+}
+
+.rp-badge--na {
+  background: #eef1f0;
+  color: #4c5a54;
+}
+
+.rp-note {
+  margin-top: 1mm;
+  font-size: 9.5pt;
+  white-space: normal;
+}
+
+.rp-note b {
+  color: #3b4a44;
+}
+
+.rp-date {
+  white-space: nowrap;
+}
+
+.rp-hijri {
+  display: block;
+  font-size: 8.5pt;
+  color: #5b6a64;
+}
+
+/* التوقيع */
+.rp-signature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10mm;
+  margin-top: 8mm;
+  padding-top: 2mm;
+}
+
+.rp-sign {
+  text-align: center;
+  padding: 3mm 4mm 4mm;
+  border: 0.25mm solid #cfd8d4;
+  border-radius: 2mm;
+}
+
+.rp-sign__role {
+  font-weight: 700;
+  color: #5b6a64;
+  font-size: 10pt;
+}
+
+.rp-sign__name {
+  font-weight: 800;
+  font-size: 12pt;
+  color: var(--green-900);
+  min-height: 1.5em;
+}
+
+.rp-sign__line {
+  display: flex;
+  align-items: flex-end;
+  gap: 2mm;
+  margin-top: 9mm;
+  font-size: 9.5pt;
+  color: #3b4a44;
+}
+
+.rp-sign__line i {
+  flex: 1;
+  border-bottom: 0.3mm dotted #7a8a83;
+  height: 1em;
+}
+
+/* الطباعة من المتصفح */
+#print-root {
+  display: none;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html.is-printing,
+  html.is-printing body {
+    background: #fff !important;
+    margin: 0;
+    padding: 0;
+    overflow: visible !important;
+  }
+
+  html.is-printing body > *:not(#print-root) {
+    display: none !important;
+  }
+
+  html.is-printing #print-root {
+    display: block;
+  }
+
+  #print-root .rp-page {
+    height: 296.5mm;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  #print-root .rp-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}

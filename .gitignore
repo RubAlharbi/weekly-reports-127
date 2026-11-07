@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+Thumbs.db
+*.pdf
+
+# النسخ الأصلية للشعارين؛ النسخ المستخدمة في الموقع موجودة في public/assets
+/school-logo-png.png
+/moe-logo-png.webp
