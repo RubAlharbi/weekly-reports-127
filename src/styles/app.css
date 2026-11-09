@@ -394,6 +394,16 @@
   color: var(--gray-600);
 }
 
+.field__privacy {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--radius-sm);
+  background: var(--warn-50);
+  border: 1px solid #f3e2b8;
+  color: var(--warn);
+}
+
 .field__error {
   font-size: 0.83rem;
   color: var(--danger);

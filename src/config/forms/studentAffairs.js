@@ -1,3 +1,6 @@
+// معرّفات بنود محذوفة قد تبقى قيمها في مسودات قديمة؛ لا يُعاد استخدامها لبنود جديدة:
+// supplementary (حلّ محله totalRegistered)، absenceRecorded (حلّ محله absenceRecordedActual)،
+// parentsContacted (حلّ محله absentParentsContacted). يشمل ذلك ملاحظاتها بالمفتاح id__note.
 export default {
   id: 'student',
   agency: 'الشؤون الطلابية',
@@ -11,7 +14,7 @@ export default {
       fields: [
         { id: 'transferredIn', type: 'number', label: 'عدد الطلاب المنقولين إلى المدرسة' },
         { id: 'transferredOut', type: 'number', label: 'عدد الطلاب المنقولين من المدرسة' },
-        { id: 'supplementary', type: 'number', label: 'عدد الطلاب المكملين' },
+        { id: 'totalRegistered', type: 'number', label: 'العدد الإجمالي للطلاب المسجلين' },
       ],
     },
     {
@@ -22,15 +25,15 @@ export default {
         { id: 'absenceRate', type: 'percent', label: 'نسبة الغياب خلال الأسبوع' },
         { id: 'excusedExit', type: 'number', label: 'عدد الطلاب المستأذنين للخروج من الحصص' },
         {
-          id: 'absenceRecorded',
+          id: 'absenceRecordedActual',
           type: 'yesno',
-          label: 'هل تم رصد الغياب في النظام؟',
+          label: 'هل تم رصد الغياب في النظام وفق الحضور الفعلي؟',
           note: { when: 'no', label: 'السبب والإجراء المتخذ' },
         },
         {
-          id: 'parentsContacted',
+          id: 'absentParentsContacted',
           type: 'yesno',
-          label: 'هل تم التواصل مع أولياء الأمور؟',
+          label: 'هل تم التواصل مع أولياء أمور الطلاب الغائبين؟',
           note: { when: 'no', label: 'السبب والإجراء المتخذ' },
         },
         { id: 'visitsCount', type: 'number', label: 'عدد الزيارات خلال الأسبوع' },

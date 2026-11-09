@@ -29,6 +29,9 @@ function fieldShell(field, inputId, control, { wide = false } = {}) {
     'div',
     { class: `field field--${field.type}${wide ? ' field--wide' : ''}`, dataset: { fieldId: field.id } },
     h('label', { class: 'field__label', for: inputId }, field.label, field.required ? h('span', { class: 'field__req', 'aria-hidden': 'true' }, ' *') : null),
+    field.sensitive
+      ? h('p', { class: 'field__privacy', id: `${inputId}-privacy` }, 'حمايةً للأسماء وتفاصيل الحالات: يظهر هذا النص في ملف PDF عند التصدير، لكنه لا يُحفظ في المسودة ولا يُستعاد منها.')
+      : null,
     control,
     field.hint ? h('p', { class: 'field__hint' }, field.hint) : null,
     error,
@@ -104,7 +107,7 @@ function dateField(field, store, onChange) {
 
 function textareaField(field, store, onChange) {
   const id = uid('area');
-  const area = h('textarea', { id, class: 'input input--area', rows: 3, placeholder: 'اكتبي هنا…' });
+  const area = h('textarea', { id, class: 'input input--area', rows: 3, placeholder: 'اكتبي هنا…', 'aria-describedby': field.sensitive ? `${id}-privacy` : null });
   area.value = store.get(field.id) ?? '';
   area.addEventListener('input', () => {
     store.set(field.id, area.value);

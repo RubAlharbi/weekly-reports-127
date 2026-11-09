@@ -2,7 +2,7 @@ export default {
   id: 'educational',
   agency: 'الشؤون التعليمية',
   title: 'تقرير الشؤون التعليمية',
-  description: 'حصص الانتظار والانضباط، الاختبارات والتحصيل، الزيارات والتطوير المهني.',
+  description: 'حصص الانتظار والانضباط، المناوبة والإشراف، الاختبارات والتحصيل، الزيارات والتطوير المهني.',
   icon: 'book',
   sections: [
     {
@@ -39,6 +39,18 @@ export default {
       ],
     },
     {
+      id: 'duty',
+      title: 'المناوبة والإشراف',
+      fields: [
+        { id: 'dutyActivated', type: 'yesno', label: 'هل تم تفعيل المناوبة؟' },
+        { id: 'dutyReportsDone', type: 'yesno', label: 'هل تم استكمال تقارير المناوبة؟' },
+        { id: 'dutyIssues', type: 'yesno', label: 'هل تم رصد مشكلات أثناء المناوبة؟' },
+        { id: 'dutyIssuesDetails', type: 'textarea', label: 'تفاصيل المشكلات والإجراءات المتخذة', sensitive: true },
+        { id: 'supervisionDone', type: 'yesno', label: 'هل نفذت المراقبات الإشراف في المواقع المحددة؟' },
+        { id: 'supervisionNonCommitment', type: 'textarea', label: 'حالات عدم الالتزام بالإشراف', sensitive: true },
+      ],
+    },
+    {
       id: 'exams',
       title: 'الاختبارات والتحصيل الدراسي',
       fields: [
@@ -60,6 +72,7 @@ export default {
           label: 'هل تمت متابعة اختبارات الطلاب على المنصة؟',
           note: { when: 'no', label: 'السبب والإجراء المتخذ' },
         },
+        { id: 'platformFollowUpForms', type: 'yesno', label: 'هل تم إرسال استمارات متابعة الطلاب عبر المنصة؟' },
         {
           id: 'lessonsUploaded',
           type: 'yesno',
@@ -120,6 +133,12 @@ export default {
             { id: 'topic', label: 'الموضوع', type: 'text', width: 30 },
             { id: 'results', label: 'النتائج والتوصيات', type: 'text', width: 34 },
           ],
+        },
+        {
+          id: 'periodicMeetings',
+          type: 'textarea',
+          label: 'الاجتماعات الدورية المنفذة',
+          hint: 'سجّلي تفاصيل كل اجتماع: نوعه وتاريخه وموضوعه وما نتج عنه.',
         },
       ],
     },
