@@ -77,7 +77,7 @@ export default {
           id: 'spendingClosed',
           type: 'yesno',
           label: 'هل تم اعتماد الصرف في النظام؟',
-          note: { when: 'no', label: 'سبب عدم الإغلاق والموعد المتوقع' },
+          note: { when: 'no', label: 'سبب عدم الاعتماد والموعد المتوقع' },
         },
         { id: 'financeDetails', type: 'textarea', label: 'تفاصيل المتابعة والإجراءات' },
       ],

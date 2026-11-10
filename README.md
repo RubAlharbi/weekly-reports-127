@@ -60,7 +60,7 @@ npm run preview    # يعرضه على http://localhost:4173
 
 // نعم / لا / لا ينطبق، مع مربع ملاحظات يظهر عند اختيار «لا»
 { id: 'spendingClosed', type: 'yesno', label: 'هل تم اعتماد الصرف في النظام؟',
-  note: { when: 'no', label: 'سبب عدم الإغلاق' } },
+  note: { when: 'no', label: 'سبب عدم الاعتماد' } },
 
 // جدول بصفوف قابلة للإضافة والحذف
 { id: 'meetings', type: 'table', label: 'تفاصيل الاجتماعات', addLabel: 'إضافة اجتماع',
