@@ -5,7 +5,7 @@ import { deleteDraft, loadDraft, saveDraft, storageAvailable } from '../utils/dr
 import { createPdf, canShareFile, downloadBlob } from '../report/pdf.js';
 import { openPreview } from '../report/preview.js';
 import { confirmDialog, dialog, hideLoading, showLoading, toast } from './dialogs.js';
-import { numberError, renderField } from './fields.js';
+import { numberError, renderField, selectError } from './fields.js';
 import { icon } from './icons.js';
 
 const ORDINALS = ['الأول', 'الثاني', 'الثالث', 'الرابع', 'الخامس', 'السادس', 'السابع', 'الثامن'];
@@ -59,6 +59,7 @@ export function renderFormView(form) {
       const value = scope === 'base' ? state.base[field.id] : state.fields[field.id];
       let message = null;
       if (field.type === 'number' || field.type === 'percent') message = numberError(field, value);
+      if (field.type === 'select') message = selectError(field, value);
       if (!message && strict && field.required && isBlank(value)) message = 'هذا الحقل مطلوب';
       if (message) errors.push({ key, entry, message });
     }

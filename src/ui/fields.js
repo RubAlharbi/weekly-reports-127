@@ -23,6 +23,12 @@ export function numberError(field, value) {
   return null;
 }
 
+/** رسالة الخطأ لقائمة اختيار تحمل قيمة لم تعد ضمن خياراتها (مثل مسودة قديمة)، أو null. */
+export function selectError(field, value) {
+  if (value === undefined || value === '' || field.options.includes(value)) return null;
+  return `القيمة المحفوظة «${value}» لم تعد ضمن الخيارات. اختاري ${field.label} من جديد.`;
+}
+
 function fieldShell(field, inputId, control, { wide = false } = {}) {
   const error = h('p', { class: 'field__error', id: `${inputId}-err`, 'aria-live': 'polite' });
   const el = h(
@@ -88,11 +94,14 @@ function selectField(field, store, onChange) {
     h('option', { value: '' }, 'اختاري…'),
     field.options.map((opt) => h('option', { value: opt, selected: opt === current }, opt)),
   );
+  const shell = fieldShell(field, id, select);
   select.addEventListener('change', () => {
     store.set(field.id, select.value);
+    shell.setError(selectError(field, select.value));
     onChange();
   });
-  return fieldShell(field, id, select);
+  shell.setError(selectError(field, current));
+  return shell;
 }
 
 function dateField(field, store, onChange) {
