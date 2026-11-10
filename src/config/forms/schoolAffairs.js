@@ -1,6 +1,6 @@
 // معرّفات بنود محذوفة قد تبقى قيمها في مسودات قديمة؛ لا يُعاد استخدامها لبنود جديدة:
 // pending، roundsCount، roundsDetails، transportTrips (حلّ محله transportBuses)،
-// maintRequests (حلّ محله maintRequestsUnified).
+// maintRequests (حلّ محله maintRequestsUnified)، lineupLate، deductionPeriods.
 export default {
   id: 'school',
   agency: 'الشؤون المدرسية',
@@ -33,7 +33,7 @@ export default {
         {
           id: 'safetyInspected',
           type: 'yesno',
-          label: 'هل تم تفقد سلامة المبنى من قبل مختص؟',
+          label: 'هل تم تفقد سلامة المبنى من قبل منسقة الأمن والسلامة؟',
           note: { when: 'no', label: 'سبب عدم التفقد والإجراء المتخذ' },
         },
         {
@@ -45,10 +45,10 @@ export default {
         {
           id: 'roundsDone',
           type: 'yesno',
-          label: 'هل تم تنفيذ جولات تفقدية؟',
+          label: 'هل تم تنفيذ جولات تفقدية من قبل الوكيلة؟',
           note: { when: 'no', label: 'سبب عدم تنفيذ الجولات' },
         },
-        { id: 'emergencies', type: 'yesno', label: 'هل تم رصد حالات طارئة؟' },
+        { id: 'emergencies', type: 'yesno', label: 'هل تم رصد حالات طارئة تشكل خطرًا على الطلاب؟' },
         { id: 'emergencyDetails', type: 'textarea', label: 'تفاصيل الحالات الطارئة والإجراءات المتخذة' },
         { id: 'maintNotes', type: 'textarea', label: 'ملاحظات الصيانة' },
       ],
@@ -76,7 +76,7 @@ export default {
         {
           id: 'spendingClosed',
           type: 'yesno',
-          label: 'هل تم إغلاق الصرف في النظام؟',
+          label: 'هل تم اعتماد الصرف في النظام؟',
           note: { when: 'no', label: 'سبب عدم الإغلاق والموعد المتوقع' },
         },
         { id: 'financeDetails', type: 'textarea', label: 'تفاصيل المتابعة والإجراءات' },
@@ -90,15 +90,6 @@ export default {
         { id: 'newCustodyCount', type: 'number', label: 'عدد العهد الجديدة' },
         { id: 'returnsProcessed', type: 'yesno', label: 'هل تمت معالجة الرجيع؟' },
         { id: 'returnsDetails', type: 'textarea', label: 'تفاصيل معالجة الرجيع' },
-      ],
-    },
-    {
-      id: 'extra',
-      title: 'بنود إضافية',
-      fields: [
-        // صياغة هذين البندين بانتظار المراجعة؛ عدّلي قيمة label فقط ليتغير المسمى في الاستمارة وملف PDF.
-        { id: 'lineupLate', type: 'number', label: 'عدد حالات التأخر في الطابور' },
-        { id: 'deductionPeriods', type: 'number', label: 'عدد فترات الحسم' },
       ],
     },
   ],
